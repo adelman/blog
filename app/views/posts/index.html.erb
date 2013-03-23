@@ -10,16 +10,19 @@
     <th></th>
   </tr>
 
-<% @posts.each do |post| %>
+  <!-- Because I like to see newest to oldest -->
+  <% @posts.reverse_each do |post| %>
+
   <tr>
-    <td><%= post.name %></td>
-    <td><%= post.title %></td>
-    <td><%= post.content %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+      <td><%= post.name %></td>
+      <td><%= post.title %></td>
+      <td><%= post.content %></td>
+      <td><%= link_to 'Show', post %></td>
+      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+      <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?',
+                                       :method => :delete %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
 
 <br />
